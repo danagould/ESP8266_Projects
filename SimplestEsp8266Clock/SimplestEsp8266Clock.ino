@@ -21,8 +21,8 @@
  *  * periodically synced to NTP time server
  *  
  *  Cons:
- *  * hardwired WiFi SSID and password for simplicity
- *  * hardwired timezone and DST offset
+ *  * hardcoded WiFi SSID and password for simplicity
+ *  * hardcoded timezone and DST offset
  *  * must be connected to internet
  *  * no battery-backed RTC
  *  * 24 hour time by default
