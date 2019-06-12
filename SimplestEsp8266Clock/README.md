@@ -1,1 +1,12 @@
+#SimplestEsp8266Clock
 
+Simplest internet synced clock using just a WiMos D1 Mini ESP8266 module and a 4-digit, TM1637-based LED display.
+Pros:
+- minimum hardware and software
+- periodically synced to NTP time server
+Cons:
+- hardwired WiFi SSID and password for simplicity
+- must be connected to internet
+- no battery-backed RTC
+- 24 hour time by default
+- needs a cool looking case
