@@ -1,5 +1,9 @@
 /*  Simplest ESP8266 Clock
  *
+ *  This project uses a WiMos D1 Mini ESP8266 module and a 4-digit,
+ *  TM1637-based LED display module to create an internet time server 
+ *  synced clock.
+ *
  *    WeMos        TM1637
  *    D1 Mini      Display
  *    ----+        +----
@@ -21,6 +25,7 @@
  *  * must be connected to internet
  *  * no battery-backed RTC
  *  * 24 hour time by default
+ *  * needs a cool looking case
  */
 
 #include <TimeLib.h> // https://github.com/PaulStoffregen/Time
