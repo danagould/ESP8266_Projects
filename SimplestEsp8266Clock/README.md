@@ -12,3 +12,5 @@ Cons:
 - no battery-backed RTC
 - 24 hour time by default
 - needs a cool looking case
+
+![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-circuit.png "SimplestEsp8266Clock Circuit")
