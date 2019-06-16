@@ -15,5 +15,6 @@ Cons:
 - needs a cool looking case
 
 ![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-circuit.png "SimplestEsp8266Clock Circuit")
-![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-wired.jpg "SimplestEsp8266Clock Circuit")
-![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-folded.jpg "SimplestEsp8266Clock Circuit")
+![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-wired.jpg "SimplestEsp8266Clock Wired")
+![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-folded.jpg "SimplestEsp8266Clock Back View")
+![alt text](https://github.com/danagould/ESP8266_Projects/blob/master/SimplestEsp8266Clock/SimplestEsp8266Clock-front.jpg "SimplestEsp8266Clock Front View")
