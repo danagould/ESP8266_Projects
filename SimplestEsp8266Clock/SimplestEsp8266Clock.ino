@@ -87,7 +87,7 @@ const time_t ntpSyncInterval = 24*60*60; // resync every 24 hours
 void setup() {
   Serial.begin(115200);
 
-  DBprintln("Simpest ESP8266 Clock");
+  DBprintln("\nSimplest ESP8266 Clock");
 
   // connect to WLAN
   DBprint("SSID: "); DBprintln(ssid);
@@ -143,8 +143,15 @@ void displayTime() {
     mm = minute(tt); // extract minutes
     ss = second(tt); // extract seconds
 
-    colon ^= 0b01000000; // blink colon
-    tm1637.showNumberDecEx((hh*100)+mm, colon, true); // update display
+    if(hh < 10) {
+      colon ^= 0b10000000; // blink colon
+      tm1637.setSegments(arrayOfZeros, 1, 0); // erase leading digit if before 10:00
+      tm1637.showNumberDecEx((hh*100)+mm, colon, true, 3, 1); // update display; h:mm
+    }
+    else {
+      colon ^= 0b01000000; // blink colon
+      tm1637.showNumberDecEx((hh*100)+mm, colon, true); // update display; hh:mm
+    }
 
     nextTime += 500; // next update in 500 milliseconds
   }
