@@ -133,6 +133,7 @@ void getNtpTime() {
  */
 void displayTime() {
   static unsigned long nextTime = 0;
+  uint8_t arrayOfZeros[] = {0, 0, 0, 0}; // technically we only need one zero element
   // update display every 500 milliseconds
   if (nextTime < millis()) {
     static uint8_t colon = 0;
