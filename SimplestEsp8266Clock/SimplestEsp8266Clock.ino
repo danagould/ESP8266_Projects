@@ -54,7 +54,7 @@
  * For more information, please refer to [http://unlicense.org]
  */
 
-#include <TimeLib.h> // https://github.com/PaulStoffregen/Time
+#include <time.h> // https://github.com/esp8266/Arduino/blob/master/tools/sdk/libc/xtensa-lx106-elf/include/time.h
 
 #include <ESP8266WiFi.h> // https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi
 
@@ -72,12 +72,6 @@ TM1637Display tm1637(TM1637_CLKPIN, TM1637_DIOPIN);
 // WLAN credentials
 const char *ssid     = "<SSID>";
 const char *password = "<PASSWORD>";
-
-// UTC timezone
-const int timezone = -5;  // eastern standard time
-
-// DST offset
-const int dstOffset = 1; // daylight savings time offset
 
 const time_t ntpSyncInterval = 24*60*60; // resync every 24 hours
 
@@ -103,6 +97,9 @@ void setup() {
   DBprintln("\nConnected");
   DBprint("IP address: "); DBprintln(WiFi.localIP());
 
+  // set timezone
+  setenv("TZ", "EST5EDT", 1);
+
   // set LED brightness 0 (lowest) to 7 (highest)
   tm1637.setBrightness(7);
 }
@@ -119,7 +116,7 @@ void loop() {
  *  periodically sync clock with NTP server (default 24 hours)
  */
 void getNtpTime() {
-  static unsigned long nextTime = 0;
+  static unsigned long nextTime = millis();
   // periodically sync clock with NTP server
   if(nextTime < millis()) {
     DBprintln("Syncing time");
@@ -132,17 +129,20 @@ void getNtpTime() {
  *  update the LED display twice a second (so we can blink the colon)
  */
 void displayTime() {
-  static unsigned long nextTime = 0;
+  static unsigned long nextTime = millis();
   uint8_t arrayOfZeros[] = {0, 0, 0, 0}; // technically we only need one zero element
   // update display every 500 milliseconds
   if (nextTime < millis()) {
     static uint8_t colon = 0;
     int hh, mm, ss;
 
-    time_t tt = time(nullptr); // get current time
-    hh = hour(tt); // extract hours
-    mm = minute(tt); // extract minutes
-    ss = second(tt); // extract seconds
+    time_t tt;
+    struct tm *lt;
+    time(&tt); // get current time
+    lt = localtime(&tt); // convert to local time
+    hh = lt->tm_hour; // extract hours
+    mm = lt->tm_min; // extract minutes
+    ss = lt->tm_sec; // extract seconds
 
     if(hh < 10) {
       colon ^= 0b10000000; // blink colon
